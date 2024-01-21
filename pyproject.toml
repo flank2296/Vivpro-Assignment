@@ -11,6 +11,9 @@ djangorestframework = "^3.14.0"
 Django = "^5.0.1"
 
 
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.20.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -1,9 +1,11 @@
-from core.models import MusicTrack
+from rest_framework.views import APIView
+
 from django.http import JsonResponse
 from django.middleware.csrf import rotate_token
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.views import APIView
+
+from core.models import MusicTrack
 
 
 @csrf_exempt
@@ -16,6 +18,8 @@ def ping(request):
 class NormalizeMusicJson(APIView):
     """API which accepts unstructured json input, normalizes it and adds in MusicTrack table"""
 
+    http_method_names = ["post"]
+
     def post(self, request, *args, **kwargs):
         payload = request.data
         if not payload:
@@ -23,6 +27,8 @@ class NormalizeMusicJson(APIView):
 
         instance_mapper = {}
         for col_name, values in payload.items():
+            col_name = col_name if col_name != "class" else "class_field"
+
             for index, value in values.items():
                 current_instance = instance_mapper.get(index) or MusicTrack()
                 setattr(current_instance, col_name, value)
