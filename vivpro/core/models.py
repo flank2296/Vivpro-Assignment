@@ -47,6 +47,24 @@ class MusicTrack(models.Model):
     num_sections = models.IntegerField()
     num_segments = models.IntegerField()
     class_field = models.CharField(max_length=255)
+    rating = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        db_table = "MusicTrack"
+        indexes = [models.Index(fields=["title"])]
+
+    def validate(self, *args, **kwargs):
+        """Holds all validations needed before saving the music track instance"""
+        if not self.rating:
+            return
+
+        if self.rating > 5:
+            raise Exception("Max rating for a song is 5!")
+
+    def save(self, *args, **kwargs) -> None:
+        """Overrides core django model's save method to add before and after save methods"""
+        self.validate(*args, **kwargs)
+        super().save(*args, **kwargs)
