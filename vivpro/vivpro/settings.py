@@ -49,6 +49,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Custom middlwares here
+    "core.middleware.ExceptionHandlingMiddleware",
 ]
 
 ROOT_URLCONF = "vivpro.urls"
