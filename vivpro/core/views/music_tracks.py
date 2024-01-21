@@ -14,19 +14,22 @@ class MusicTrackListView(APIView):
     http_method_names = ["get"]
     MAX_ITEM_SIZE = 10
 
-    def get(self, request, page_no, *args, **kwargs):
+    def get(self, request, page_no, force_fetch_all, *args, **kwargs):
         to_idx = page_no * self.MAX_ITEM_SIZE
         from_idx = to_idx - self.MAX_ITEM_SIZE
 
         instances = MusicTrack.objects.all()
         total_instaces = instances.count()
-        sliced_instances = instances[from_idx:to_idx]
+        sliced_instances = (
+            instances[from_idx:to_idx] if not force_fetch_all else instances
+        )
+
         return JsonResponse(
             {
                 "current_page": page_no,
                 "is_last_page": total_instaces <= to_idx,
                 "no_of_pages": total_instaces / (to_idx - from_idx),
-                "instaces": MusicSerializer(sliced_instances, many=True).data,
+                "instances": MusicSerializer(sliced_instances, many=True).data,
             }
         )
 
