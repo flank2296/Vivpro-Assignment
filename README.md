@@ -17,6 +17,6 @@
 - Go to postman and use `{{base_url}}/core/normalize_json` API to dump the data in the database. For simplicity sake, we will be using sqlite
 
 - Install React 18.2
-- Go to <project-dir>/static/frontend
+- Go to <project-dir>/vivpro/static/frontend
 - Install necesary pacakges using `yarn install`
 - Run command `yarn start`. Doing so will run frontend server on http://localhost:3000

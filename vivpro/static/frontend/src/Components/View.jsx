@@ -7,10 +7,11 @@ import Tabs from "react-bootstrap/Tabs";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+
 import { Rating } from "./Rating";
 import { TrackBarChart, TrackHistogram, TrackScatterChart } from "./TrackCharts";
 
-export const TabularView = () => {
+export const View = () => {
   const [tracks, setTracks] = useState([]);
   const [colDefs, setColDefs] = useState([
     { field: "id" },

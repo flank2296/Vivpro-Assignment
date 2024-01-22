@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import { TabularView } from "./Components/View";
+import { View } from "./Components/View";
 
 const routeList = [
   {
     path: "/",
-    element: <TabularView />,
+    element: <View />,
   },
 ];
 
