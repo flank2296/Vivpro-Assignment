@@ -1,6 +1,5 @@
 # Vivpro-Assignment
 
-
 #### Requirements -
 - Python 3.12
 - Mysql 8.2.0
@@ -15,3 +14,9 @@
 - Once migrations are completed successfully, type `python manage.py runserver` to start the django server
 - I have added postman collection json in the repository. You can check that and use APIs accordingly.
 - I have commited `settings.py` just for your convenience. On production project, we must not expose the `settings.py` file directly.
+- Go to postman and use `{{base_url}}/core/normalize_json` API to dump the data in the database. For simplicity sake, we will be using sqlite
+
+- Install React 18.2
+- Go to <project-dir>/static/frontend
+- Install necesary pacakges using `yarn install`
+- Run command `yarn start`. Doing so will run frontend server on http://localhost:3000
